@@ -6,7 +6,7 @@ import NavBar from "./components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TeamFinder",
+  title: "Projectory",
   description: "Lets you choose right teammate or project",
 };
 

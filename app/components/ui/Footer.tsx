@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-gray-800 text-white py-6">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} TeamFinder. All rights reserved.
+          &copy; {new Date().getFullYear()} . All rights reserved.
         </p>
         <div className="mt-2">
           <a href="/privacy" className="text-gray-400 hover:text-gray-300 mx-2">
@@ -22,4 +22,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;
