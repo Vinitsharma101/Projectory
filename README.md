@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# 🚀 Projectory
 
-First, run the development server:
+A platform where creators can post their projects and others can join based on their skills. Collaborate, discuss, and build something amazing — together!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* 📝 Post your own projects with description & requirements
+* 🧑‍💻 Send join requests with your skills
+* ✅ Project admins can accept/reject members
+* 💬 Dedicated discussion space for each project
+* 🔐 Firebase authentication & storage
+* 📸 Unsplash API integration for project visuals
+* ⚙️ PostgreSQL (Railway/Neon) as database
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔧 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+* **Next.js** – Frontend Framework
+* **Firebase** – Auth, Storage
+* **PostgreSQL** – Project Data
+* **Unsplash API** – Image Support
+* **Tailwind CSS** – UI Styling
+* **Socket.IO (Optional)** – Real-time Chat
 
-## Learn More
+## 🛠️ Setup Instructions
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repo**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/your-username/projectory.git
+   cd projectory
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. **Install dependencies**
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Create `.env.local` file**
+   Use your Firebase, PostgreSQL, and Unsplash credentials.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. **Run locally**
+
+   ```bash
+   npm run dev
+   ```
+
+## 📦 Deployment
+
+Easily deployable on **Vercel**, or **Firebase Hosting
