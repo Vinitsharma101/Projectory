@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+
 import {
   motion,
   useScroll,
@@ -104,18 +105,21 @@ export const HeroParallax = ({
 };
 
 export const Header = () => {
+  
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+      <h1 className="text-2xl md:text-6xl font-bold dark:text-white font-sans mb-4 transition-all duration-300 hover:tracking-wider hover:text-blue-400">
         Build Something <br /> Amazing Together
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        Connect with passionate developers, designers, and creators. Find the perfect team 
-        for your next big idea or join exciting projects that match your skills.
+
+      <p className="max-w-2xl text-base md:text-xl mt-4 dark:text-neutral-200 transition-all duration-300 hover:text-blue-300 hover:scale-105">
+        Connect with passionate developers and join exciting projects that match
+        your skills.
       </p>
+
       <div className="mt-8">
         <Link
-          href="/post-project"
+          href="/postprojects"
           className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mr-4"
         >
           Post a Project

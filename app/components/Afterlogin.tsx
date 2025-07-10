@@ -94,7 +94,7 @@ export function HeroParallaxDemo() {
             title: "Social Network",
             description: "Niche social platform for developers",
             skillsNeeded: ["Next.js", "GraphQL", "AWS"],
-            link: "/projects/social-network",
+            link: "/postprojects",
             thumbnail: images[5],
           },
           {

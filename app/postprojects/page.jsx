@@ -1,65 +1,75 @@
-'use client'
-import { useState } from 'react'
+"use client";
+import { useState } from "react";
 
-import { useAuth } from '@/contexts/AuthContext'
-import { useRouter } from 'next/navigation'
-import { Loader2 } from 'lucide-react'
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 export default function ProjectForm() {
-  const router = useRouter()
+  const router = useRouter();
 
   const { user } = useAuth();
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [techStack, setTechStack] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const userEmail = user?.email || ''
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [techStack, setTechStack] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [thumbnail, setThumbnail] = useState("");
+  const userEmail = user?.email || "";
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     const projectData = {
       title,
       description,
-      techStack: techStack.split(',').map((tech) => tech.trim()),
+      techStack: techStack.split(",").map((tech) => tech.trim()),
       userEmail,
-    }
+      thumbnail:
+        thumbnail.trim() ||
+        "https://sgbe.cubosystems.com//images/default/defaultProjectImage.png",
+    };
 
     try {
-      const response = await fetch('/api/createproject', {
-        method: 'POST',
+      const response = await fetch("/api/createproject", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(projectData),
-      })
+      });
 
       if (response.ok) {
-        console.log('Project created successfully')
-        router.push('/projects')
+        console.log("Project created successfully");
+        router.push("/projects");
       } else {
-        console.error('Failed to create project')
+        router.push("/projects");
+        console.error("Failed to create project");
       }
     } catch (error) {
-      console.error('Error:', error)
+      console.error("Error:", error);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white">Create New Project</h2>
-          <p className="mt-2 text-gray-400">Share your project idea with potential team members</p>
+          <p className="mt-2 text-gray-400">
+            Share your project idea with potential team members
+          </p>
         </div>
 
         <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-300 mb-1">
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
                 Project Title
               </label>
               <input
@@ -74,7 +84,10 @@ export default function ProjectForm() {
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-1">
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
                 Description
               </label>
               <textarea
@@ -89,7 +102,10 @@ export default function ProjectForm() {
             </div>
 
             <div>
-              <label htmlFor="techStack" className="block text-sm font-medium text-gray-300 mb-1">
+              <label
+                htmlFor="techStack"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
                 Tech Stack
               </label>
               <input
@@ -101,7 +117,29 @@ export default function ProjectForm() {
                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                 required
               />
-              <p className="mt-1 text-sm text-gray-400">Separate technologies with commas</p>
+              <p className="mt-1 text-sm text-gray-400">
+                Separate technologies with commas
+              </p>
+            </div>
+
+            <div>
+              <label
+                htmlFor="thumbnail"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
+                Project Image URL (optional)
+              </label>
+              <input
+                id="thumbnail"
+                type="url"
+                placeholder="https://example.com/image.png"
+                value={thumbnail}
+                onChange={(e) => setThumbnail(e.target.value)}
+                className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              />
+              <p className="mt-1 text-sm text-gray-400">
+                Leave blank to use a default project image.
+              </p>
             </div>
 
             <button
@@ -115,12 +153,12 @@ export default function ProjectForm() {
                   Creating Project...
                 </>
               ) : (
-                'Create Project'
+                "Create Project"
               )}
             </button>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
